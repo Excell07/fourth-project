@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="search-photos">
+        <input type="text" placeholder="Search photos..">
+    </form>       
+    <div id="captions" class="gallery">
+        
+        <a href="photo_gallery_v3/photos/01.jpg" data-sub-html="<h4>Hay Bales</h4><p>I love hay bales. Took this snap on a drive through the countryside past some straw fields.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/01.jpg" alt="">
+        </a>  
+        
+        <a href="photo_gallery_v3/photos/02.jpg" data-sub-html="<h4>Lake</h4><p>The lake was so calm today. We had a great view of the snow on the mountains from here.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/02.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/03.jpg" data-sub-html="<h4>Canyon</h4><p>I hiked to the top of the mountain and got this picture of the canyon and trees below.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/03.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/04.jpg" data-sub-html="<h4>Iceberg</h4><p>It was amazing to see an iceberg up close, it was so cold but didn’t snow today.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/04.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/05.jpg" data-sub-html="<h4>Desert</h4><p>The red cliffs were beautiful. It was really hot in the desert but we did a lot of walking through the canyons.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/05.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/06.jpg" data-sub-html="<h4>Fall</h4><p>Fall is coming, I love when the leaves on the trees start to change color.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/06.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/07.jpg" data-sub-html="<h4>Plantation</h4><p>I drove past this plantation yesterday, everything is so green!</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/07.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/08.jpg" data-sub-html="<h4>Dunes</h4><p>My summer vacation to the Oregon Coast. I love the sandy dunes!</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/08.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/09.jpg" data-sub-html="<h4>Countryside Lane</h4><p>We enjoyed a quiet stroll down this countryside lane.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/09.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/10.jpg" data-sub-html="<h4>Sunset</h4><p>Sunset at the coast! The sky turned a lovely shade of orange.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/10.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/11.jpg" data-sub-html="<h4>Cave</h4><p>I did a tour of a cave today and the view of the landscape below was breathtaking.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/11.jpg" alt="">
+        </a>
+
+        <a href="photo_gallery_v3/photos/12.jpg" data-sub-html="<h4>Bluebells</h4><p>I walked through this meadow of bluebells and got a good view of the snow on the mountain before the fog came in.</p>">
+            <img src="photo_gallery_v3/photos/thumbnails/12.jpg" alt="">
+        </a>
+    </div> 
+           
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="dist/js/lightgallery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#captions').lightGallery({
+                subHtmlSelectorRelative: true
+            });
+        });
+    </script>
+
+    <script>      
+// filter photos
+document.addEventListener('DOMContentLoaded', function(){
+    const list = document.querySelector('#captions');
+    const searchBar = document.forms['search-photos'].querySelector('input');
+    searchBar.addEventListener('keyup', (e) => {
+        const term = e.target.value.toLowerCase();
+        const photos = list.getElementsByTagName('a');
+        Array.from(photos).forEach((photo) => {
+            const title = photo.getAttribute("data-sub-html");
+            if(title.toLowerCase().indexOf(term) != -1){
+                photo.style.display = 'block';
+                photo.style.marginRight = "auto";
+            } else {
+                photo.style.display = 'none';
+            }
+        });
+    });
+}); 
+    </script>
+</body>
+</html>

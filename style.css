@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+form {
+    text-align: center;
+    margin: 20px;
+}
+
+form input {
+    min-width: 37%;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+input[type="text"]::-ms-input-placeholder {
+    color: #aaa;
+}
+
+/* Flexbox style */
+.gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gallery a {
+    margin: 0 2%;
+}
+
+a img {
+    margin: 7% 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 1024px){
+
+    .gallery {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
