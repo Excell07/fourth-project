@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
     <link rel="stylesheet" href="dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form id="search-photos">
@@ -64,35 +64,9 @@
     </div> 
            
 
-    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="dist/js/lightgallery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#captions').lightGallery({
-                subHtmlSelectorRelative: true
-            });
-        });
-    </script>
+    <script src="js/filter.js"></script>
 
-    <script>      
-// filter photos
-document.addEventListener('DOMContentLoaded', function(){
-    const list = document.querySelector('#captions');
-    const searchBar = document.forms['search-photos'].querySelector('input');
-    searchBar.addEventListener('keyup', (e) => {
-        const term = e.target.value.toLowerCase();
-        const photos = list.getElementsByTagName('a');
-        Array.from(photos).forEach((photo) => {
-            const title = photo.getAttribute("data-sub-html");
-            if(title.toLowerCase().indexOf(term) != -1){
-                photo.style.display = 'block';
-                photo.style.marginRight = "auto";
-            } else {
-                photo.style.display = 'none';
-            }
-        });
-    });
-}); 
-    </script>
 </body>
 </html>
